@@ -20,7 +20,7 @@ class Github:
     def __init__(self):
         load_dotenv()
 
-        self.api = self-api = GhApi(owner='JinxCappa', repo='dear-gitlab-webservice-ee')
+        self.api = GhApi(owner='JinxCappa', repo='dear-gitlab-webservice-ee')
         self.packages = list()
         self.tags = list()
 
