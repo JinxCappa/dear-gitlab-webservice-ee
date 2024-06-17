@@ -20,15 +20,14 @@ class Github:
     def __init__(self):
         load_dotenv()
 
-        self.api = GhApi(owner='UAws', repo='dear-gitlab-webservice-ee')
+        self.api = self-api = GhApi(owner='JinxCappa', repo='dear-gitlab-webservice-ee')
         self.packages = list()
         self.tags = list()
 
     def fetch_github_available_docker_versions(self):
 
         for i in range(1, 10):
-            self.packages.extend(self.api.packages.get_all_package_versions_for_package_owned_by_org('uaws', 'container',                                                                  'dear-gitlab-webservice-ee',
-              i, '100'))
+            self.packages.extend(self.api.packages.get_all_package_versions_for_package_owned_by_authenticated_user('container', 'dear-gitlab-webservice-ee', i, '100'))
 
         for p in self.packages:
 
@@ -52,7 +51,7 @@ class Github:
 
         execute_now(f'git add ../Dockerfile')
         execute_now(f'git commit -m add_{tag}')
-        execute_now(f'git remote set-url origin https://$GITHUB_TOKEN@github.com/UAws/dear-gitlab-webservice-ee.git')
+        execute_now(f'git remote set-url origin https://$GITHUB_TOKEN@github.com/JinxCappa/dear-gitlab-webservice-ee.git')
         out, err, status = execute_now('git push --set-upstream origin v{tag}.m1 --force'.format(tag=tag))
 
         if status != 0:
