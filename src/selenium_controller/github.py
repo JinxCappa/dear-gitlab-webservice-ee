@@ -51,7 +51,7 @@ class Github:
 
         execute_now(f'git add ../Dockerfile')
         execute_now(f'git commit -m add_{tag}')
-        execute_now(f'git remote set-url origin https://$BOT_TOKEN@github.com/JinxCappa/dear-gitlab-webservice-ee.git')
+        execute_now(f'git remote set-url origin https://$GITHUB_TOKEN@github.com/JinxCappa/dear-gitlab-webservice-ee.git')
         out, err, status = execute_now('git push --set-upstream origin v{tag}.m1 --force'.format(tag=tag))
 
         if status != 0:
