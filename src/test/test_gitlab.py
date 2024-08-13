@@ -55,7 +55,7 @@ class Test(TestCase):
 
         new_tags = list()
 
-        github_tags = [t.replace('v', '').replace('.m1', '') for t in github_tags]
+        github_tags = [t.replace('v', '') for t in github_tags]
 
         # match the gitlab version which not inside GitHub tags, the github tags contains gitlab version
         for gitlab_version in gitlab_versions:
