@@ -40,7 +40,7 @@ class Github:
 
     def create_new_branch(self, tag):
 
-        execute_now('git checkout -b v{tag}.m1'.format(tag=tag))
+        execute_now('git checkout -b v{tag}'.format(tag=tag))
 
         with FileInput(files=find('Dockerfile', '../../'), inplace=True) as f:
             for line in f:
@@ -52,7 +52,7 @@ class Github:
         execute_now(f'git add ../Dockerfile')
         execute_now(f'git commit -m add_{tag}')
         execute_now(f'git remote set-url origin https://$GITHUB_TOKEN@github.com/JinxCappa/dear-gitlab-webservice-ee.git')
-        out, err, status = execute_now('git push --set-upstream origin v{tag}.m1 --force'.format(tag=tag))
+        out, err, status = execute_now('git push --set-upstream origin v{tag} --force'.format(tag=tag))
 
         if status != 0:
             exit(status)
