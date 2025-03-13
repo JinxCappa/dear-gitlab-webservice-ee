@@ -10,4 +10,4 @@ dataclasses~=0.6
 selenium~=4.29.0
 selenium-wire==5.1.0
 ghapi~=1.0.6
-pyopenssl=25.0.0
+pyopenssl==25.0.0
