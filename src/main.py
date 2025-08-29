@@ -1,6 +1,7 @@
 from selenium_controller.github import Github
 from selenium_controller.gitlab import Gitlab
 from utils.shell_executor.executor import execute_now
+from constants import BLOCKED_VERSIONS, MIN_MAJOR_VERSION
 
 
 def main():
@@ -18,7 +19,7 @@ def main():
 
     # match the gitlab version which not inside GitHub tags, the github tags contains gitlab version
     for gitlab_version in gitlab_versions:
-        if gitlab_version not in github_tags and gitlab_version not in ["16.5.5", "16.6.3", "16.7.1", "17.1.5", "17.2.3", "17.2.6", "17.7.5", "17.8.3",  "17.9.4", "17.10.2"] and int(gitlab_version.split('.')[0]) > 12:
+        if gitlab_version not in github_tags and gitlab_version not in BLOCKED_VERSIONS and int(gitlab_version.split('.')[0]) > MIN_MAJOR_VERSION:
             new_tags.append(gitlab_version)
 
     for tag in new_tags:
